@@ -1,0 +1,105 @@
+<openerp>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="act_res_partner_2_loan_order" model="ir.actions.act_window">
+            <field name="name">Loan Sales</field>
+            <field name="res_model">sale.loan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+            <field name="groups_id" eval="[(4, ref('base.group_sale_salesman'))]"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Create a Loan Account, the first step of a new loan sale.
+              </p><p>
+                Your next actions should flow efficiently: confirm the Loan Account Go through stages and collect money from client.
+              </p><p>
+                Note that once a Loan becomes a Loan Order, it will be moved from the Loans list to the Loans Order list.
+              </p>
+            </field>
+        </record>
+    
+    <record id="product_template_loan_form_view" model="ir.ui.view">
+      <field name="name">product.template.loan.form.view</field>
+      <field name="model">product.template</field>
+      <field name="priority">6</field>
+      <field name="inherit_id" ref="product.product_template_form_view"/>
+      <field name="arch" type="xml">
+        <page name="sales" position="after">
+                    <page string="Loan Terms">
+                        <group name="properties">
+                            <group>
+                            		<field name="loanproductsetingsref" widget="reference" class="oe_inline oe_text_right"/>
+                            </group>
+                            <group>
+                                <field name="loanterms" widget="reference" class="oe_inline oe_text_right"/>
+                            </group>
+                        </group>
+                        <group name="loanterms"/>
+                    </page>
+                </page>
+      </field>
+    </record>
+    
+    
+    <record id="res_partner_view_buttons_loans" model="ir.ui.view">
+            <field name="name">res.partner.view.buttons.loans</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="priority" eval="25"/>
+            <field name="groups_id" eval="[(4, ref('base.group_sale_salesman'))]"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="action" name="%(act_res_partner_2_loan_order)d" 
+                        attrs="{'invisible': [('customer', '=', False)]}"
+                        icon="fa-usd">
+                        
+                    </button>     
+                </div>
+            </field>
+        </record>
+    
+    
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="lending_core.action_window">
+      <field name="name">lending_core window</field>
+      <field name="res_model">lending_core.lending_core</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="lending_core.action_server">
+      <field name="name">lending_core server</field>
+      <field name="model_id" ref="model_lending_core_lending_core"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="lending_core" id="lending_core.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="lending_core.menu_1" parent="lending_core.menu_root"/>
+    <menuitem name="Menu 2" id="lending_core.menu_2" parent="lending_core.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="lending_core.menu_1_list" parent="lending_core.menu_1"
+              action="lending_core.action_window"/>
+    <menuitem name="Server to list" id="lending_core" parent="lending_core.menu_2"
+              action="lending_core.action_server"/>
+    -->
+  </data>
+</openerp>
