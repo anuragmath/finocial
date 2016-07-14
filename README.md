@@ -22,10 +22,11 @@ Finocial is a lightweight core banking platform which provides social infusion a
 
 Finocial uses a number of open source projects to work properly:
 
-* 
+* Python 
+* XML
+* NODE JS 
+* Postgres
 
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
 
 ### Installation
 
