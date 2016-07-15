@@ -23,7 +23,7 @@ class LoanProductModel(models.Model):
     
     _inherit = 'product.template'
     
-    loanproductsetingsref = fields.Reference([('product.template.loansettings', 'Loan Settings')])
-    loanterms = fields.Reference([('product.template.loanapplicationterms', 'Loan Terms')])
+    loan_product_settings_id = fields.Many2one('product.template.loansettings')
+    loan_product_terms_id = fields.Many2one('product.template.loanapplicationterms')
     
 
