@@ -1,7 +1,7 @@
-Apache Fineract: A Platform for Microfinance
+Finocial: A Platform for financial-inclusion
 ============
 
-The next evolution of fineract focussing on being faster, lighter and cheaper to change (than existing mifos) so that it is more responsive to the needs of MFI’s and Integrators
+The next evolution of fineract focussing on being Machine Learning enabled,automation and easy to change (than existing fineract) so that it is more responsive to the needs of FI’s and Integrators
 
 Requirements
 ============
@@ -29,4 +29,4 @@ Instructions to execute Integration tests
 5. Run './gradlew clean integrationTest -PbuildType=TEST'
 
 
-More details of the project can be found at https://cwiki.apache.org/confluence/display/FINERACT
+More details of the project can be found at https://github.com/upscaletech/finocial/wiki
